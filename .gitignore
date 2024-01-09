@@ -12,3 +12,6 @@ data/
 
 # Ignore python cache files
 __pycache__/
+
+*.zip
+ocenv
