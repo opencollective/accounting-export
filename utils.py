@@ -1,7 +1,7 @@
 import pandas as pd
 
 
-def matchByDateAndValue(df1, df1cols, df2, df2cols, timeDelta='10 days', valueDelta=0.1):
+def matchByDateAndValue(df1, df1cols, df2, df2cols, timeDelta='10 days', valueDelta=0.1, absolute=False):
     a = df1[df1cols]
     b = df2[df2cols]
     matched = []
@@ -15,8 +15,11 @@ def matchByDateAndValue(df1, df1cols, df2, df2cols, timeDelta='10 days', valueDe
         if len(possibleByDate) == 0:
             return None
         possible = possible.loc[possibleByDate.index]
+        possibleValues = possible[df2cols[1]].abs(
+        ) if absolute else possible[df2cols[1]]
+        targetValue = abs(x[df1cols[1]]) if absolute else x[df1cols[1]]
         possibleByAmount = (
-            possible[df2cols[1]] - x[df1cols[1]]).abs().sort_values(ascending=True)
+            possibleValues - targetValue).abs().sort_values(ascending=True)
         possibleByAmount = possibleByAmount[possibleByAmount <
                                             possible.loc[possibleByAmount.index][df2cols[1]] * valueDelta]
         if len(possibleByAmount) == 0:
