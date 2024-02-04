@@ -1,7 +1,7 @@
 This Jupyter workbook is meant to help an organization on Open Collective reconcile the transactions on Wise, Stripe, Paypal and bank accounts with transactions on Open Collective.
 Documentation for the script is included in the reconciliation_pipeline.ipynb workbook. 
 
-After running the workbooks you will end up with a number of CSVs in /reports/<<fiscal host>>/. These CSVs include all transactions from Wise, Stripe, Paypal and banks that were loaded in the script, matched to their corresponding transactions on the platform or on the bank.
+After running the workbooks you will end up with a number of CSVs in /reports/your_fiscal_host/. These CSVs include all transactions from Wise, Stripe, Paypal and banks that were loaded in the script, matched to their corresponding transactions on the platform or on the bank.
 
 ## How to use the output from this workbook
 
